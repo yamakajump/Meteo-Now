@@ -15,12 +15,10 @@ function displayWeather(data) {
     weatherInfo.innerHTML = ''; // Clear previous weather info
 
     var cityName = document.createElement('h2');
+    // suppresion de "Arrondissement de"
+    data.name = data.name.replace('Arrondissement de ', '');
     cityName.textContent = data.name;
     weatherInfo.appendChild(cityName);
-
-    var weatherDescription = document.createElement('p');
-    weatherDescription.textContent = data.weather[0].description;
-    weatherInfo.appendChild(weatherDescription);
 
     var temperature = document.createElement('p');
     temperature.textContent = 'Température : ' + Math.round(data.main.temp - 273.15) + '°C';
