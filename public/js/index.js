@@ -26,5 +26,10 @@ function displayWeather(data) {
     temperature.textContent = 'Température : ' + Math.round(data.main.temp - 273.15) + '°C';
     weatherInfo.appendChild(temperature);
 
+    var weatherIcon = document.createElement('img');
+    weatherIcon.src = 'http://openweathermap.org/img/w/' + data.weather[0].icon + '.png';
+    weatherInfo.appendChild(weatherIcon);
+
     // Add more weather details as needed
 }
+
