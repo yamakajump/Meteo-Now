@@ -7,10 +7,21 @@ document.getElementById('submitBtn').addEventListener('click', function() {
         .then(data => {
             displayWeather(data);
         })
-        .catch(error => console.log('Erreur :', error));
+        .catch(
+            // afficher un message d'erreur
+            function() {
+                var weatherInfo = document.getElementById('weatherInfo');
+                weatherInfo.innerHTML = ''; // Clear previous weather info
+
+                var errorMessage = document.createElement('p');
+                errorMessage.textContent = 'Ville inconnue';
+                weatherInfo.appendChild(errorMessage);
+            }
+        );
 });
 
 function displayWeather(data) {
+    console.log(data);
     var weatherInfo = document.getElementById('weatherInfo');
     weatherInfo.innerHTML = ''; // Clear previous weather info
 
