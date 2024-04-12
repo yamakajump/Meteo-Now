@@ -34,6 +34,8 @@ function displayWeather(data) {
     var weatherIcon = document.createElement('img');
     weatherIcon.src = 'http://openweathermap.org/img/w/' + data.weather[0].icon + '.png';
     weatherInfo.appendChild(weatherIcon);
+    // augmenter la taille de l'icone
+    weatherIcon.style.width = '90px';
 
     var temperature = document.createElement('p');
     temperature.textContent = 'Température : ' + Math.round(data.main.temp - 273.15) + '°C';
