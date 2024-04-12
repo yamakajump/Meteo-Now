@@ -17,7 +17,7 @@ function displayWeather(data) {
     var cityName = document.createElement('h2');
     // suppresion de "Arrondissement de"
     data.name = data.name.replace('Arrondissement de ', '');
-    cityName.textContent = data.name;
+    cityName.textContent = data.name + ' (' + data.sys.country + ')';
     weatherInfo.appendChild(cityName);
 
     var temperature = document.createElement('p');
@@ -27,7 +27,21 @@ function displayWeather(data) {
     var weatherIcon = document.createElement('img');
     weatherIcon.src = 'http://openweathermap.org/img/w/' + data.weather[0].icon + '.png';
     weatherInfo.appendChild(weatherIcon);
+    
+    var weatherDescription = document.createElement('p');
+    weatherDescription.textContent = data.weather[0].description;
+    weatherInfo.appendChild(weatherDescription);
 
-    // Add more weather details as needed
+    var wind = document.createElement('p');
+    wind.textContent = 'Vent : ' + data.wind.speed + ' m/s';
+    weatherInfo.appendChild(wind);
+
+    var humidity = document.createElement('p');
+    humidity.textContent = 'Humidité : ' + data.main.humidity + ' %';
+    weatherInfo.appendChild(humidity);
+
+    var pressure = document.createElement('p');
+    pressure.textContent = 'Pression : ' + data.main.pressure + ' hPa';
+    weatherInfo.appendChild(pressure);
 }
 
