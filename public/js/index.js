@@ -38,10 +38,6 @@ function displayWeather(data) {
     var weatherIcon = document.createElement('img');
     weatherIcon.src = 'http://openweathermap.org/img/w/' + data.weather[0].icon + '.png';
     weatherInfo.appendChild(weatherIcon);
-    
-    var weatherDescription = document.createElement('p');
-    weatherDescription.textContent = data.weather[0].description;
-    weatherInfo.appendChild(weatherDescription);
 
     var wind = document.createElement('p');
     wind.textContent = 'Vent : ' + data.wind.speed + ' m/s';
