@@ -31,13 +31,13 @@ function displayWeather(data) {
     cityName.textContent = data.name + ' (' + data.sys.country + ')';
     weatherInfo.appendChild(cityName);
 
-    var temperature = document.createElement('p');
-    temperature.textContent = 'Température : ' + Math.round(data.main.temp - 273.15) + '°C';
-    weatherInfo.appendChild(temperature);
-
     var weatherIcon = document.createElement('img');
     weatherIcon.src = 'http://openweathermap.org/img/w/' + data.weather[0].icon + '.png';
     weatherInfo.appendChild(weatherIcon);
+
+    var temperature = document.createElement('p');
+    temperature.textContent = 'Température : ' + Math.round(data.main.temp - 273.15) + '°C';
+    weatherInfo.appendChild(temperature);
 
     var wind = document.createElement('p');
     wind.textContent = 'Vent : ' + data.wind.speed + ' m/s';
