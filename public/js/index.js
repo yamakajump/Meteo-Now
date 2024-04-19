@@ -26,8 +26,16 @@ function displayWeather(data) {
     var cityName = $('<h2>').text(data.name + ' (' + data.sys.country + ')');
     weatherInfo.append(cityName);
 
+<<<<<<< HEAD
     var weatherIcon = $('<img>').attr('src', 'http://openweathermap.org/img/w/' + data.weather[0].icon + '.png');
     weatherInfo.append(weatherIcon);
+=======
+    var weatherIcon = document.createElement('img');
+    weatherIcon.src = 'http://openweathermap.org/img/w/' + data.weather[0].icon + '.png';
+    weatherInfo.appendChild(weatherIcon);
+    // augmenter la taille de l'icone
+    weatherIcon.style.width = '90px';
+>>>>>>> 13f74002430dcba97cb384ea501e11b5b23b0080
 
     var temperature = $('<p>').text('Température : ' + Math.round(data.main.temp - 273.15) + '°C');
     weatherInfo.append(temperature);
