@@ -46,6 +46,22 @@ nav {
     background-color: #406aa8; /* Couleur de fond légèrement plus sombre */
 }
 
+.forecast-info {
+    display: inline-block;
+    width: 150px;
+    margin: 10px;
+    text-align: center;
+}
+
+.forecast-info p {
+    margin: 5px 0;
+}
+
+.forecast-info img {
+    width: 50px;
+    height: 50px;
+}
+
 input[type="text"] {
     padding: 7px; /* Espacement intérieur */
     font-size: 16px; /* Taille de la police */
@@ -84,3 +100,7 @@ footer {
     padding-top: 20px;
     border-top: 1px solid #ccc;
 }
+
+
+
+
