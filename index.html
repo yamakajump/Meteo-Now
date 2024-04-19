@@ -9,26 +9,29 @@
     <link rel="icon" href="./public/image/icon_site.png">
 
     <link rel="stylesheet" href="./public/css/style.css">
+    <link rel="stylesheet" href="./public/css/bootstrap.min.css">
 </head>
 
 <body>
     <div class="container">
-        <header>
+        <header class="d-flex justify-content-between align-items-center">
             <h1>Meteo Now !</h1>
             <nav>
-                <ul>
-                    <li><a href="#">Accueil</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">Aide</a></li>
+                <ul class="list-inline">
+                    <li class="list-inline-item"><a href="#">Accueil</a></li>
+                    <li class="list-inline-item"><a href="#">Contact</a></li>
+                    <li class="list-inline-item"><a href="#">Aide</a></li>
                 </ul>
             </nav>
         </header>
         <main>
-            <input type="text" id="cityInput" placeholder="Entrez une ville">
-            <button id="submitBtn">Valider</button>
+            <div class="mb-3">
+                <input type="text" id="cityInput" class="form-control" placeholder="Entrez une ville">
+            </div>
+            <button id="submitBtn" class="btn btn-primary mb-3">Valider</button>
             <div id="weatherInfo"></div>
         </main>
-        <footer>
+        <footer class="mt-5 pt-3 border-top text-center">
             <p>&copy; 2024 Application Météo</p>
         </footer>
     </div>
