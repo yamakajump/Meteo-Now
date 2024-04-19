@@ -1,4 +1,20 @@
+// Fonction pour gérer la validation lorsque la touche Entrée est enfoncée
+$('#cityInput').keypress(function(event) {
+    // Vérifier si la touche Entrée est enfoncée (code 13)
+    if (event.which === 13) {
+        // Appeler la fonction de validation
+        validateCity();
+    }
+});
+
+// Gestionnaire d'événement pour le clic sur le bouton "Valider"
 $('#submitBtn').click(function() {
+    // Appeler la fonction de validation
+    validateCity();
+});
+
+// Fonction de validation de la ville
+function validateCity() {
     var city = $('#cityInput').val();
     var currentWeatherUrl = 'http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=ee07e2bf337034f905cde0bdedae3db8';
     var forecastUrl = 'http://api.openweathermap.org/data/2.5/forecast?q=' + city + '&appid=ee07e2bf337034f905cde0bdedae3db8';
@@ -32,7 +48,7 @@ $('#submitBtn').click(function() {
             weatherInfo.append(errorMessage);
         }
     });
-});
+}
 
 function displayCurrentWeather(data) {
     console.log(data);
