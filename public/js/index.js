@@ -1,54 +1,43 @@
-document.getElementById('submitBtn').addEventListener('click', function() {
-    var city = document.getElementById('cityInput').value;
+$('#submitBtn').click(function() {
+    var city = $('#cityInput').val();
     var url = 'http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=ee07e2bf337034f905cde0bdedae3db8';
 
-    fetch(url)
-        .then(response => response.json())
-        .then(data => {
+    $.ajax({
+        url: url,
+        type: 'GET',
+        success: function(data) {
             displayWeather(data);
-        })
-        .catch(
-            // afficher un message d'erreur
-            function() {
-                var weatherInfo = document.getElementById('weatherInfo');
-                weatherInfo.innerHTML = ''; // Clear previous weather info
+        },
+        error: function() {
+            var weatherInfo = $('#weatherInfo');
+            weatherInfo.empty(); // Clear previous weather info
 
-                var errorMessage = document.createElement('p');
-                errorMessage.textContent = 'Ville inconnue';
-                weatherInfo.appendChild(errorMessage);
-            }
-        );
+            var errorMessage = $('<p>').text('Ville inconnue');
+            weatherInfo.append(errorMessage);
+        }
+    });
 });
 
 function displayWeather(data) {
     console.log(data);
-    var weatherInfo = document.getElementById('weatherInfo');
-    weatherInfo.innerHTML = ''; // Clear previous weather info
+    var weatherInfo = $('#weatherInfo');
+    weatherInfo.empty(); // Clear previous weather info
 
-    var cityName = document.createElement('h2');
-    // suppresion de "Arrondissement de"
-    data.name = data.name.replace('Arrondissement de ', '');
-    cityName.textContent = data.name + ' (' + data.sys.country + ')';
-    weatherInfo.appendChild(cityName);
+    var cityName = $('<h2>').text(data.name + ' (' + data.sys.country + ')');
+    weatherInfo.append(cityName);
 
-    var weatherIcon = document.createElement('img');
-    weatherIcon.src = 'http://openweathermap.org/img/w/' + data.weather[0].icon + '.png';
-    weatherInfo.appendChild(weatherIcon);
+    var weatherIcon = $('<img>').attr('src', 'http://openweathermap.org/img/w/' + data.weather[0].icon + '.png');
+    weatherInfo.append(weatherIcon);
 
-    var temperature = document.createElement('p');
-    temperature.textContent = 'Température : ' + Math.round(data.main.temp - 273.15) + '°C';
-    weatherInfo.appendChild(temperature);
+    var temperature = $('<p>').text('Température : ' + Math.round(data.main.temp - 273.15) + '°C');
+    weatherInfo.append(temperature);
 
-    var wind = document.createElement('p');
-    wind.textContent = 'Vent : ' + data.wind.speed + ' m/s';
-    weatherInfo.appendChild(wind);
+    var wind = $('<p>').text('Vent : ' + data.wind.speed + ' m/s');
+    weatherInfo.append(wind);
 
-    var humidity = document.createElement('p');
-    humidity.textContent = 'Humidité : ' + data.main.humidity + ' %';
-    weatherInfo.appendChild(humidity);
+    var humidity = $('<p>').text('Humidité : ' + data.main.humidity + ' %');
+    weatherInfo.append(humidity);
 
-    var pressure = document.createElement('p');
-    pressure.textContent = 'Pression : ' + data.main.pressure + ' hPa';
-    weatherInfo.appendChild(pressure);
+    var pressure = $('<p>').text('Pression : ' + data.main.pressure + ' hPa');
+    weatherInfo.append(pressure);
 }
-
